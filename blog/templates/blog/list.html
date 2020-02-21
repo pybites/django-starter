@@ -2,5 +2,32 @@
 
 {% block content %}
 
+  <table>
+    <thead>
+        <tr>
+          <th>Title</th>
+          <th>Slug</th>
+          <th>Post</th>
+          <th>Cover</th>
+          <th colspan="2">Edit Post</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for post in posts %}
+        <tr>
+          <td><a href="{% url "blog:blog_detail" post.id %}">{{ post.title }}</a></td>
+          <td>{{ post.slug }}</td>
+          <td>{{ post.post }}</td>
+          <td><img src="{{ post.cover }}" alt="post cover"></td>
+          <td><a href="{% url "blog:blog_detail" post.id %}">Edit</a></td>
+          <td><a href="{% url "blog:blog_delete" post.id %}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+
+  <div>
+    <a href="{% url "blog:blog_new" %}">Add a post</a>
+  </div>
 
 {% endblock %}
