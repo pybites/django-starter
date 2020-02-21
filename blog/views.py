@@ -20,7 +20,7 @@ def blog_new(request):
     if form.is_valid():
         form.save()
         messages.success(request, 'Added post')
-        return redirect('blog:list')
+        return redirect('blog:blog_list')
     return render(request, 'blog/form.html', {'form': form})
 
 
@@ -30,7 +30,7 @@ def blog_edit(request, pk):
     if form.is_valid():
         form.save()
         messages.success(request, 'Updated post')
-        return redirect('blog:list')
+        return redirect('blog:blog_list')
 
     return render(request, 'blog/form.html', {'post': post,
                                               'form': form})
@@ -42,6 +42,6 @@ def blog_delete(request, pk):
     if request.method == 'POST':
         post.delete()
         messages.success(request, 'Deleted post')
-        return redirect('blog:list')
+        return redirect('blog:blog_list')
 
     return render(request, 'blog/post_confirm_delete.html', {'post': post})
