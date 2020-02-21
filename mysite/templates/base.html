@@ -1,0 +1,27 @@
+{% load static %}
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>My first Django app</title>
+  <meta name="description" content="My first Django app">
+  <meta name="author" content="PDM">
+
+  <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" />
+  <!-- if you want some nice styling: -->
+  <script src="//cdn.muicss.com/mui-0.10.1/js/mui.min.js"></script>
+
+</head>
+
+<body>
+  {% block content %}{% endblock %}
+  <script src="{% static 'js/script.js' %}"></script>
+
+  <footer>
+    Made with ♥ by a NAME|PyBites Ninja
+  </footer>
+</body>
+
+</html>
