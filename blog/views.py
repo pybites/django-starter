@@ -5,21 +5,21 @@ from .models import Blog
 from .forms import BlogForm
 
 
-def post_list(request):
+def blog_list(request):
     pass
 
 
-def post_detail(request):
+def blog_detail(request):
     pass
 
 
-def post_new(request):
+def blog_new(request):
     pass
 
 
-def post_edit(request):
+def blog_edit(request):
     pass
 
 
-def post_delete(request):
+def blog_delete(request):
     pass
