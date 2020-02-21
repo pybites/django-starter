@@ -1,2 +1,3 @@
-# django-starter
+# Django starter
+
 Build a simple blog app
