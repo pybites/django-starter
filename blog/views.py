@@ -44,4 +44,4 @@ def blog_delete(request, pk):
         messages.success(request, 'Deleted post')
         return redirect('blog:blog_list')
 
-    return render(request, 'blog/post_confirm_delete.html', {'post': post})
+    return render(request, 'blog/delete.html', {'post': post})
