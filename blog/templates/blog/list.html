@@ -1,6 +1,38 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<a href="{% url "blog:blog_list" %}">Home</a>
+<h2>All Blog Entries</h2>
 
+<table>
+    <thead align="left">
+    <tr>
+        <th>Title</th>
+        <th>Post</th>
+        <th>Slug</th>
+        <th>Cover</th>
+        <th colspan="2">Edit Post</th>
+    </tr>
+    </thead>
 
+    <tbody align="left">
+    {% for blog in blog_list %}
+    <tr>
+        <td><a href="{% url "blog:blog_detail" blog.id %}">{{ blog.title }}</a></td>
+        <td>{{ blog.post }}</td>
+        <td>{{ blog.slug }}</td>
+        <td><img src="{{ blog.cover }}" alt="blog post cover"></td>
+        <td><a href="{% url "blog:blog_edit" blog.id %}">Edit</a></td>
+        <td><a href="{% url "blog:blog_delete" blog.id %}">Delete</a></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+
+</table>
+<br>
+<a href="{% url "blog:blog_new" %}">
+<button>Add a blog
+</button>
+</a>
+<br><br>
 {% endblock %}

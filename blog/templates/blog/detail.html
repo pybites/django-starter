@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<a href="{% url "blog:blog_list" %}">Back</a>
+<h2>Blog Detail for {{ data.title }}</h2>
+
+<table>
+    <thead align="left">
+    <tr>
+        <th>Field</th>
+        <th>Value</th>
+    </tr>
+    </thead>
+
+    <tbody align="left">
+    <tr>
+        <td>Title</td>
+        <td>{{ data.title }}</td>
+    </tr>
+    <tr>
+        <td>Post</td>
+        <td>{{ data.post }}</td>
+    </tr>
+    <tr>
+        <td>Slug</td>
+        <td>{{ data.slug }}</td>
+    </tr>
+    <tr>
+        <td>Cover</td>
+        <td><img src="{{ data.cover }}" alt="blog post cover"></td>
+    </tr>
+    </tbody>
+
+</table>
+<br>
+<a href="{% url "blog:blog_edit" data.id %}">
+<button>Edit</button>
+</a>
+<br><br>
+{% endblock %}
