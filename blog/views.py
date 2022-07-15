@@ -50,6 +50,15 @@ def blog_edit(request, pk):
     return render(request, 'blog/create_view.html', {'post': obj,
                                                      'form': form})
 
+
 def blog_delete(request, pk):
-    Blog.objects.filter(id=pk).delete()
-    return redirect('/')
+    # Blog.objects.filter(id=pk).delete()
+    context = {}
+    obj = get_object_or_404(Blog, id=pk)
+    context["data"] = obj
+
+    if request.method == "POST":
+        obj.delete()
+        return HttpResponseRedirect("/")
+
+    return render(request, 'blog/delete.html', context)

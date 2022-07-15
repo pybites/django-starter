@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<a href="{% url "blog:blog_list" %}">Home</a>
+<h2>Delete Blog Entry Post</h2>
+
+<form method="post">
+    {% csrf_token %}
+    <h3>Do you want to delete {{ data.title }}?</h3>
+    <p>
+        <a href="{% url "blog:blog_list" %}" ><input type="submit" value="Yes"/></a> <a href="../">No</a>
+    </p>
+</form>
+<br>
+{% endblock %}
