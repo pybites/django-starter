@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.shortcuts import get_object_or_404, render, redirect, HttpResponseRedirect
+from django.shortcuts import get_object_or_404, render, redirect
 
 from .models import Blog
 from .forms import BlogForm
@@ -13,7 +13,8 @@ def blog_list(request):
 
 def blog_detail(request, pk):
     context = {}
-    context["data"] = Blog.objects.get(id=pk)
+    obj = get_object_or_404(Blog, id=pk)
+    context["data"] = obj
 
     return render(request, "blog/detail.html", context)
 
@@ -28,7 +29,7 @@ def blog_new(request):
     context['form'] = form
 
     if request.method == "POST":
-        return HttpResponseRedirect("/")
+        return redirect('blog:blog_list')
 
     return render(request, 'blog/create_view.html', context)
 
@@ -37,6 +38,7 @@ def blog_edit(request, pk):
     context = {}
 
     obj = get_object_or_404(Blog, id=pk)
+
     form = BlogForm(request.POST or None, instance=obj)
 
     if form.is_valid():
@@ -45,7 +47,7 @@ def blog_edit(request, pk):
     context["form"] = form
 
     if request.method == "POST":
-        return HttpResponseRedirect("/")
+        return redirect('blog:blog_list')
 
     return render(request, 'blog/create_view.html', {'post': obj,
                                                      'form': form})
@@ -59,6 +61,6 @@ def blog_delete(request, pk):
 
     if request.method == "POST":
         obj.delete()
-        return HttpResponseRedirect("/")
+        return redirect('blog:blog_list')
 
     return render(request, 'blog/delete.html', context)
