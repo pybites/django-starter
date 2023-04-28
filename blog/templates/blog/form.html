@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load bootstrap5 %}
 
 {% block content %}
 
@@ -6,21 +7,11 @@
   <form method="post">
     {% csrf_token %}
 
-    {% for field in form %}
-      <td>
-        <div>
-            {{ field.errors }}
-            <p>{{ field.label_tag }}</p>
-            {{ field }}
-            {% if field.help_text %}
-              <p class="help">{{ field.help_text|safe }}</p>
-            {% endif %}
-        </div>
-      </td>
-    {% endfor %}
-
-    <input type="submit" value="{% if post %}Edit{% else %}New{% endif %}" />
-    <a href="{% url "blog:blog_list" %}">Go Back</a>
+    {% bootstrap_form form %}
+    {% buttons %}
+    <input type="submit" value="{% if post %}Edit{% else %}New{% endif %}" class="btn btn-primary">
+      <a href="{% url "blog:blog_list" %}">Go Back</a>
+    {% endbuttons %}
   </form>
 
 {% endblock %}

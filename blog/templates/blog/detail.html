@@ -2,14 +2,14 @@
 
 {% block content %}
 
-  <div>
-    <h1>{{ post.title }}</h1>
-    <p>{{ post.post }}</p>
-  </div>
-
-  <div>
-    <a href="{% url "blog:blog_edit" post.id %}">Edit</a>
-    <a href="{% url "blog:blog_list" %}">Go Back</a>
+  <div class="card" style="width: 18rem;">
+    <img src="{{post.cover}}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{ post.title}}</h5>
+      <p class="card-text">{{ post.post }}</p>
+      <a href="{% url "blog:blog_edit" post.id %}">Edit</a>
+      <a href="{% url "blog:blog_list" %}">Go Back</a>
+    </div>
   </div>
 
 {% endblock %}
