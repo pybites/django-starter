@@ -21,6 +21,8 @@ def blog_new(request):
         form.save()
         messages.success(request, 'Added post')
         return redirect('blog:blog_list')
+    else:
+        messages.error(request, 'Could not add post')
     return render(request, 'blog/form.html', {'form': form})
 
 
